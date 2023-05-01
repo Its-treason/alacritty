@@ -1,0 +1,56 @@
+name: Package
+
+on:
+  workflow_dispatch:
+
+env:
+  CARGO_TERM_COLOR: always
+
+jobs:
+
+  linux:
+    runs-on: debian-testing
+
+    permissions:
+      contents: "write"
+
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          path: 'src'
+      - name: Install dependencies
+        run: |
+          sudo apt install -y cmake pkg-config libfreetype6-dev libfontconfig1-dev \
+            libxcb-xfixes0-dev libxkbcommon-dev python3
+      - name: Get Upstream source
+        working-directory: 'src'
+        run: |
+          UPSTREAM_VERSION=$(dpkg-parsechangelog -S Version | cut -d- -f1)
+          curl https://codeload.github.com/alacritty/alacritty/tar.gz/refs/tags/v${UPSTREAM_VERSION} -o ../alacritty_${UPSTREAM_VERSION}.orig.tar.gz
+      - name: Package
+        working-directory: 'src'
+        run: |
+          # Default pattern with the .github folder added
+          IGNORE_PATTERN="(?:^|/).*~$|(?:^|/)\.#.*$|(?:^|/)\..*\.sw.$|(?:^|/),,.*(?:$|/.*$)|(?:^|/)(?:DEADJOE|\.arch-inventory|\.(?:bzr|cvs|hg|git|mtn-)ignore)$|(?:^|/)(?:CVS|RCS|\.deps|\{arch\}|\.arch-ids|\.svn|\.hg(?:tags|sigs)?|_darcs|\.git(?:attributes|modules|review|hub)?|\.mailmap|\.shelf|_MTN|\.be|\.bzr(?:\.backup|tags)?)(?:$|/.*$)"
+          dpkg-buildpackage -uc -us --diff-ignore=${IGNORE_PATTERN}
+      - name: Upload artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: Package
+          path: |
+           ./alacritty_*
+           ./alacritty-dbgsym_*
+      - name: Lintian
+        run: |
+          /usr/bin/lintian -i -I --show-overrides ./*.changes
+      - name: Release
+        uses: softprops/action-gh-release@v1
+        if: startsWith(github.ref, 'refs/tags/')
+        with:
+          files: |
+           ./alacritty_*
+           ./alacritty-dbgsym_*
+      - name: Cleanup
+        run: |
+          rm -rf ./*
+
