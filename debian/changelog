@@ -1,3 +1,9 @@
+alacritty (0.12.0-1~bpo11+1) bullseye-backports; urgency=medium
+
+  * Rebuild for bullseye-backports. 
+
+ -- Its Treason <packages@its-treason.com>  Tue, 02 May 2023 00:26:41 +0200
+
 alacritty (0.12.0-1) unstable; urgency=medium
 
   * Initial release.

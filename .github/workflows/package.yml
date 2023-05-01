@@ -9,7 +9,7 @@ env:
 jobs:
 
   linux:
-    runs-on: debian-testing
+    runs-on: debian-bullseye
 
     permissions:
       contents: "write"
