@@ -13,7 +13,6 @@ override_dh_auto_test:
 	cargo test
 
 override_dh_auto_install:
-	# TODO: Check if there is better way to do this
 	install -D target/release/alacritty $(DESTDIR)/usr/bin/alacritty
 	# Destop shortcut
 	install -D -m 644 extra/logo/compat/alacritty-term.png $(DESTDIR)/usr/share/pixmaps/Alacritty.png

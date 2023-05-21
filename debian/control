@@ -7,8 +7,9 @@ Standards-Version: 4.6.2
 Homepage: https://github.com/alacritty/alacritty
 
 Package: alacritty
-Depends: ${shlibs:Depends}
-Architecture: amd64
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Provides: x-terminal-emulator
 Description: Fast, cross-platform, OpenGL terminal emulator
  Alacritty is a modern terminal emulator that comes with sensible defaults, 
  but allows for extensive configuration. By integrating with other applications,
