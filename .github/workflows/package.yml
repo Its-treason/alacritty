@@ -12,7 +12,7 @@ env:
 jobs:
 
   linux:
-    runs-on: debian-testing
+    runs-on: debian-sid
 
     permissions:
       contents: "write"
