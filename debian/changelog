@@ -1,3 +1,10 @@
+alacritty (0.12.0-2) unstable; urgency=medium
+
+  * Add Maintainer script to add alternative for "x-terminal-emulator"
+  * Add "Provides: x-terminal-emulator" to control file
+
+ -- Its Treason <packages@its-treason.com>  Mon, 22 May 2023 22:36:50 +0200
+
 alacritty (0.12.0-1) unstable; urgency=medium
 
   * Initial release.
