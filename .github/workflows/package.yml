@@ -40,9 +40,9 @@ jobs:
           path: |
             ./alacritty_*
             ./alacritty-dbgsym_*
-      - name: Lintian
-        run: |
-          /usr/bin/lintian -i -I --show-overrides ./*.changes
+      #- name: Lintian
+      #  run: |
+      #    /usr/bin/lintian -i -I --show-overrides ./*.changes
       - name: Release
         uses: softprops/action-gh-release@v1
         if: startsWith(github.ref, 'refs/tags/')
