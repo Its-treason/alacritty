@@ -8,7 +8,7 @@ Homepage: https://github.com/alacritty/alacritty
 
 Package: alacritty
 Architecture: any
-Depends: ${shlibs:Depends}, ${misc:Depends}
+Depends: ${shlibs:Depends}, ${misc:Depends}, ncurses-term (>= 6.2)
 Provides: x-terminal-emulator
 Description: Fast, cross-platform, OpenGL terminal emulator
  Alacritty is a modern terminal emulator that comes with sensible defaults, 

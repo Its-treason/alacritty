@@ -17,6 +17,3 @@ override_dh_auto_install:
 	# Destop shortcut
 	install -D -m 644 extra/logo/compat/alacritty-term.png $(DESTDIR)/usr/share/pixmaps/Alacritty.png
 	install -D -m 644 extra/linux/Alacritty.desktop $(DESTDIR)/usr/share/applications/Alacritty.desktop
-	# Terminal info
-	mkdir -p $(DESTDIR)/etc/terminfo
-	tic -xe alacritty,alacritty-direct extra/alacritty.info -o $(DESTDIR)/etc/terminfo
