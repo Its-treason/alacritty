@@ -1,11 +1,11 @@
-alacritty (0.12.0-2~rc2) UNRELEASED; urgency=medium
+alacritty (0.12.0-2) unstable; urgency=medium
 
   * Add Maintainer script to add alternative for "x-terminal-emulator"
   * Add "Provides: x-terminal-emulator" to control file
   * Remove terminal info
   * Now depends on "ncurses-term (>= 6.2)" for terminal info
 
- -- Its Treason <packages@its-treason.com>  Tue, 23 May 2023 22:52:11 +0200
+ -- Its Treason <packages@its-treason.com>  Wed, 24 May 2023 22:41:07 +0200
 
 alacritty (0.12.0-1) unstable; urgency=medium
 
